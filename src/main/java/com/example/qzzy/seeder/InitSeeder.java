@@ -9,11 +9,15 @@ import com.example.qzzy.repository.QuestionRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -28,22 +32,25 @@ public class InitSeeder implements CommandLineRunner {
     @Override
     public void run(String... args) throws IOException {
 
+
         ObjectMapper mapper = new ObjectMapper();
 
-        JsonNode rootCategoriesNode = mapper.readTree(new ClassPathResource("categories.json").getFile());
+        InputStream is = InitSeeder.class.getResourceAsStream("/data/categories.json");
+        JsonNode rootCategoriesNode = mapper.readTree(is);
         JsonNode itemsNode = rootCategoriesNode.get("items");
         for (JsonNode itemNode : itemsNode) {
             Category category = parseCategory(itemNode);
             categoryRepository.save(category);
         }
 
-        JsonNode rootQuestionsNode = mapper.readTree(new ClassPathResource("questions.json").getFile());
 
+        InputStream isQuestions = InitSeeder.class.getResourceAsStream("/data/questions.json");
+        JsonNode rootQuestionsNode = mapper.readTree(isQuestions);
         JsonNode questionsNode = rootQuestionsNode.get("questions");
         for (JsonNode questionNode : questionsNode) {
             Question question = parseQuestion(questionNode);
-            question = questionRepository.save(question); // Save the question
-            saveAnswers(question, questionNode.get("answers")); // Save the answers and set the question reference
+            question = questionRepository.save(question);
+            saveAnswers(question, questionNode.get("answers"));
         }
     }
 
