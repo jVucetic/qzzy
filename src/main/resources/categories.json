@@ -1,0 +1,274 @@
+{
+  "items": [
+    {
+      "id": 245678,
+      "name": "Africa"
+    },
+    {
+      "id": 134569,
+      "name": "Asia"
+    },
+    {
+      "id": 987654,
+      "name": "Europe"
+    },
+    {
+      "id": 345678,
+      "name": "North America"
+    },
+    {
+      "id": 456789,
+      "name": "South America"
+    },
+    {
+      "id": 567890,
+      "name": "Australia"
+    },
+    {
+      "id": 678901,
+      "name": "Antarctica",
+      "selected": true
+    },
+    {
+      "id": 100001,
+      "name": "Nigeria",
+      "category_id": 245678
+    },
+    {
+      "id": 100002,
+      "name": "Ethiopia",
+      "category_id": 245678,
+      "selected": true
+    },
+    {
+      "id": 100003,
+      "name": "Egypt",
+      "category_id": 245678
+    },
+    {
+      "id": 100004,
+      "name": "South Africa",
+      "category_id": 245678
+    },
+    {
+      "id": 100005,
+      "name": "Kenya",
+      "category_id": 245678
+    },
+    {
+      "id": 100006,
+      "name": "Uganda",
+      "category_id": 245678
+    },
+    {
+      "id": 100007,
+      "name": "Algeria",
+      "category_id": 245678
+    },
+    {
+      "id": 100008,
+      "name": "China",
+      "category_id": 134569,
+      "selected": true
+    },
+    {
+      "id": 100009,
+      "name": "India",
+      "category_id": 134569,
+      "selected": true
+    },
+    {
+      "id": 100010,
+      "name": "Indonesia",
+      "category_id": 134569
+    },
+    {
+      "id": 100011,
+      "name": "Pakistan",
+      "category_id": 134569
+    },
+    {
+      "id": 100012,
+      "name": "Bangladesh",
+      "category_id": 134569
+    },
+    {
+      "id": 100013,
+      "name": "Japan",
+      "category_id": 134569
+    },
+    {
+      "id": 100014,
+      "name": "Philippines",
+      "category_id": 134569,
+      "selected": true
+    },
+    {
+      "id": 100015,
+      "name": "Vietnam",
+      "category_id": 134569,
+      "selected": true
+    },
+    {
+      "id": 100016,
+      "name": "Turkey",
+      "category_id": 134569
+    },
+    {
+      "id": 100017,
+      "name": "Iran",
+      "category_id": 134569
+    },
+    {
+      "id": 100018,
+      "name": "Thailand",
+      "category_id": 134569
+    },
+    {
+      "id": 100019,
+      "name": "South Korea",
+      "category_id": 134569
+    },
+    {
+      "id": 100020,
+      "name": "Germany",
+      "category_id": 987654
+    },
+    {
+      "id": 100021,
+      "name": "France",
+      "category_id": 987654
+    },
+    {
+      "id": 100022,
+      "name": "United Kingdom",
+      "category_id": 987654
+    },
+    {
+      "id": 100023,
+      "name": "Italy",
+      "category_id": 987654
+    },
+    {
+      "id": 100024,
+      "name": "Spain",
+      "category_id": 987654
+    },
+    {
+      "id": 100025,
+      "name": "Ukraine",
+      "category_id": 987654
+    },
+    {
+      "id": 100026,
+      "name": "Poland",
+      "category_id": 987654
+    },
+    {
+      "id": 100027,
+      "name": "Romania",
+      "category_id": 987654
+    },
+    {
+      "id": 1011127,
+      "name": "Serbia",
+      "category_id": 987654
+    },
+    {
+      "id": 1222227,
+      "name": "Montenegro",
+      "category_id": 987654
+    },
+    {
+      "id": 100028,
+      "name": "United States",
+      "category_id": 345678
+    },
+    {
+      "id": 100029,
+      "name": "Canada",
+      "category_id": 345678
+    },
+    {
+      "id": 100030,
+      "name": "Mexico",
+      "category_id": 345678
+    },
+    {
+      "id": 100031,
+      "name": "Guatemala",
+      "category_id": 345678
+    },
+    {
+      "id": 100032,
+      "name": "Cuba",
+      "category_id": 345678
+    },
+    {
+      "id": 100033,
+      "name": "Haiti",
+      "category_id": 345678
+    },
+    {
+      "id": 100034,
+      "name": "Dominican Republic",
+      "category_id": 345678
+    },
+    {
+      "id": 100035,
+      "name": "Brazil",
+      "category_id": 456789
+    },
+    {
+      "id": 100036,
+      "name": "Argentina",
+      "category_id": 456789
+    },
+    {
+      "id": 100037,
+      "name": "Colombia",
+      "category_id": 456789
+    },
+    {
+      "id": 100038,
+      "name": "Chile",
+      "category_id": 456789
+    },
+    {
+      "id": 100039,
+      "name": "Peru",
+      "category_id": 456789
+    },
+    {
+      "id": 100040,
+      "name": "Venezuela",
+      "category_id": 456789
+    },
+    {
+      "id": 100042,
+      "name": "New Zealand",
+      "category_id": 567890
+    },
+    {
+      "id": 100043,
+      "name": "Fiji",
+      "category_id": 567890
+    },
+    {
+      "id": 100044,
+      "name": "Papua New Guinea",
+      "category_id": 567890
+    },
+    {
+      "id": 100045,
+      "name": "Argentina",
+      "category_id": 456789
+    },
+    {
+      "id": 100047,
+      "name": "Chile",
+      "category_id": 456789,
+      "selected": true
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "questions": [
+    {
+      "id": 500001,
+      "question": "What is the capital of France?",
+      "answers": [
+        {
+          "id": 600001,
+          "answer": "Paris",
+          "correct": true
+        },
+        {
+          "id": 600002,
+          "answer": "Lyon"
+        },
+        {
+          "id": 600003,
+          "answer": "Marseille"
+        }
+      ]
+    },
+    {
+      "id": 500002,
+      "question": "Which country is known as the Land of the Rising Sun?",
+      "answers": [
+        {
+          "id": 600004,
+          "answer": "China"
+        },
+        {
+          "id": 600005,
+          "answer": "Japan",
+          "correct": true
+        },
+        {
+          "id": 600006,
+          "answer": "South Korea"
+        }
+      ]
+    },
+    {
+      "id": 500003,
+      "question": "What is the largest desert in the world?",
+      "answers": [
+        {
+          "id": 600007,
+          "answer": "Sahara Desert"
+        },
+        {
+          "id": 600008,
+          "answer": "Gobi Desert"
+        },
+        {
+          "id": 600009,
+          "answer": "Antarctic Desert",
+          "correct": true
+        }
+      ]
+    },
+    {
+      "id": 500004,
+      "question": "Which river is the longest in the world?",
+      "answers": [
+        {
+          "id": 600010,
+          "answer": "Amazon River"
+        },
+        {
+          "id": 600011,
+          "answer": "Nile River",
+          "correct": true
+        },
+        {
+          "id": 600012,
+          "answer": "Yangtze River"
+        }
+      ]
+    },
+    {
+      "id": 500005,
+      "question": "Mount Everest is located in which mountain range?",
+      "answers": [
+        {
+          "id": 600013,
+          "answer": "Andes"
+        },
+        {
+          "id": 600014,
+          "answer": "Himalayas",
+          "correct": true
+        },
+        {
+          "id": 600015,
+          "answer": "Rockies"
+        }
+      ]
+    }
+  ]
+}

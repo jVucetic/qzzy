@@ -1,11 +1,12 @@
 package com.example.qzzy.controller;
 
-import com.example.qzzy.dto.*;
+import com.example.qzzy.dto.CategoryDto;
+import com.example.qzzy.dto.CategoryResponseDto;
+import com.example.qzzy.dto.SelectedCategoriesRequest;
+import com.example.qzzy.dto.SelectedCategoriesResponse;
 import com.example.qzzy.models.Category;
 import com.example.qzzy.services.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
-import io.swagger.v3.oas.annotations.Parameters;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -15,7 +16,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping("/api/category")
@@ -24,9 +28,6 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @Operation(summary = "Get all Categories")
-    @Parameters({
-            @Parameter(name = "selected", description = "Selected Categories"),
-    })
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the Categories",
                     content = {
@@ -38,8 +39,8 @@ public class CategoryController {
                     })
     })
     @GetMapping
-    public ResponseEntity<CategoryResponseDto> getAllCategories(@RequestParam(value = "selected", required = false) Boolean selected) {
-        List<Category> categories = categoryService.findAll(selected);
+    public ResponseEntity<CategoryResponseDto> getAllCategories() {
+        List<Category> categories = categoryService.findAll();
 
         List<CategoryDto> items = new ArrayList<>();
 
@@ -54,57 +55,6 @@ public class CategoryController {
         return ResponseEntity.ok(response);
     }
 
-    @Operation(summary = "Get Category by ID")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Found the Category",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = Category.class))}),
-            @ApiResponse(responseCode = "404", description = "Category not found",
-                    content = @Content)
-    })
-    @GetMapping("/{id}")
-    public ResponseEntity<Category> getCategoryById(@PathVariable Long id) {
-        Optional<Category> category = categoryService.findById(id);
-        return category.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @Operation(summary = "Create a new Category")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Category created",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = CategoryDto.class))})
-    })
-    @PostMapping
-    public CategoryDto createCategory(@RequestBody CategoryRequestDto dto) {
-        return categoryService.save(dto);
-    }
-
-
-    @Operation(summary = "Update an existing Category")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Category updated",
-                    content = {@Content(mediaType = "application/json",
-                            schema = @Schema(implementation = CategoryDto.class))}),
-            @ApiResponse(responseCode = "404", description = "Category not found",
-                    content = @Content)
-    })
-    @PutMapping("/{id}")
-    public ResponseEntity<CategoryDto> updateCategory(@PathVariable Long id, @RequestBody CategoryRequestDto dto) {
-        Optional<Category> category = categoryService.findById(id);
-        return category.map(value -> ResponseEntity.ok(categoryService.update(value, dto)))
-                .orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
-    @Operation(summary = "Delete a Category")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "204", description = "Category deleted",
-                    content = @Content)
-    })
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCategory(@PathVariable Long id) {
-        categoryService.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
 
     @Operation(summary = "Get Selected Categories")
     @ApiResponses(value = {
@@ -123,8 +73,9 @@ public class CategoryController {
                     content = {@Content(mediaType = "application/json",
                             schema = @Schema(implementation = SelectedCategoriesRequest.class))})
     })
+    @ResponseStatus(OK)
     @PostMapping("/select")
-    public SelectedCategoriesResponse saveSelectedCategories(@RequestBody SelectedCategoriesRequest dto) {
-        return categoryService.select(dto);
+    public void saveSelectedCategories(@RequestBody SelectedCategoriesRequest dto) {
+        categoryService.select(dto);
     }
 }

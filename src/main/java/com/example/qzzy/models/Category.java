@@ -9,9 +9,10 @@ import java.util.Set;
 @Getter
 @Setter
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String categoryName;
@@ -19,19 +20,9 @@ public class Category {
     private Boolean selected = Boolean.FALSE;
 
     @ManyToOne
-    @JoinColumn(name = "parent_id")
+    @JoinColumn(name = "category_id")
     private Category parentCategory;
 
     @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Category> subcategories;
-
-    @Builder
-    public Category(Long id, String categoryName, Category parentCategory, Set<Category> subcategories) {
-        this.id = id;
-        this.categoryName = categoryName;
-        this.parentCategory = parentCategory;
-        this.subcategories = subcategories;
-    }
-
-
 }

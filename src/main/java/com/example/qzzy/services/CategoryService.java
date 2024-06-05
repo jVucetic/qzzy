@@ -1,7 +1,7 @@
 package com.example.qzzy.services;
 
-import com.example.qzzy.dto.CategoryRequestDto;
 import com.example.qzzy.dto.CategoryDto;
+import com.example.qzzy.dto.CategoryRequestDto;
 import com.example.qzzy.dto.SelectedCategoriesRequest;
 import com.example.qzzy.dto.SelectedCategoriesResponse;
 import com.example.qzzy.models.Category;
@@ -12,17 +12,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
 public class CategoryService {
     private final CategoryRepository categoryRepository;
 
-    public List<Category> findAll(Boolean selected) {
-        if ( selected == null) {
-            selected = false;
-        }
-        return categoryRepository.findAllCategories(selected);
+    public List<Category> findAll() {
+        return categoryRepository.findAll();
     }
 
     public Optional<Category> findById(Long id) {
@@ -65,23 +63,32 @@ public class CategoryService {
                 .categoryId(category.getParentCategory() == null ? 0 : category.getParentCategory().getId())
                 .build();
     }
+
     public void deleteById(Long id) {
         categoryRepository.deleteById(id);
     }
 
     public SelectedCategoriesResponse getSelectedCategories() {
-        return new SelectedCategoriesResponse(categoryRepository.findAllSelectedCategories());
+        return new SelectedCategoriesResponse(categoryRepository.findAllSelectedCategories().stream()
+                .map(Category::getId).collect(Collectors.toList())
+        );
     }
-    public SelectedCategoriesResponse select(SelectedCategoriesRequest selectedCategories) {
-        List<Long> selected = new ArrayList<>();
+
+    public void select(SelectedCategoriesRequest selectedCategories) {
+        List<Category> allCategories = new ArrayList<>();
+
+        List<Category> oldSelectedCategories = categoryRepository.findAllSelectedCategories();
+        oldSelectedCategories.forEach(item -> {
+            item.setSelected(false);
+            allCategories.add(item);
+        });
 
         List<Category> categories = categoryRepository.findAllById(selectedCategories.getCategoryIds());
         categories.forEach(category -> {
             category.setSelected(true);
-            selected.add(category.getId());
+            allCategories.add(category);
         });
-        categoryRepository.saveAll(categories);
 
-        return new SelectedCategoriesResponse(selected);
+        categoryRepository.saveAll(allCategories);
     }
 }
