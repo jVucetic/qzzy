@@ -9,7 +9,6 @@ import com.example.qzzy.repository.QuestionRepository;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
-import net.datafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
@@ -18,7 +17,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Random;
 
 @Component
 @RequiredArgsConstructor
@@ -39,7 +37,7 @@ public class InitSeeder implements CommandLineRunner {
             categoryRepository.save(category);
         }
 
-        JsonNode rootQuestionsNode = mapper.readTree(new ClassPathResource("QandA.json").getFile());
+        JsonNode rootQuestionsNode = mapper.readTree(new ClassPathResource("questions.json").getFile());
 
         JsonNode questionsNode = rootQuestionsNode.get("questions");
         for (JsonNode questionNode : questionsNode) {

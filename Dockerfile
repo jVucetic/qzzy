@@ -15,10 +15,26 @@ RUN ./gradlew clean build -x test
 
 RUN ls -la /root
 
-FROM openjdk:21
-WORKDIR /app/
-COPY --from=BUILD_IMAGE /root/build/libs/*.jar ./qzzy.jar
-EXPOSE 8080
-CMD ["java","-jar","qzzy.jar"]
+#FROM openjdk:21
+#WORKDIR /app/
+#COPY --from=BUILD_IMAGE /root/build/libs/*.jar ./qzzy.jar
+#EXPOSE 8080
+#CMD ["java","-jar","qzzy.jar"]
 
 
+
+
+#FROM openjdk:21 AS build
+#RUN microdnf install findutils
+#EXPOSE 8080
+#WORKDIR .
+#
+#COPY ./build.gradle .
+#COPY ./gradlew .
+#COPY ./gradlew.bat .
+#COPY gradle .
+#COPY src ./src
+#
+#RUN ./gradlew clean build -x test
+#
+#ENTRYPOINT ["java","-jar","qzzy-0.0.1-SNAPSHOT.jar"]
