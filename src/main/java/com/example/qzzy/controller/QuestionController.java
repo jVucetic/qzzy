@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/questions")
@@ -51,6 +50,15 @@ public class QuestionController {
         return questionService.isAnswerCorrect(questionId, answerId);
     }
 
+    @Operation(summary = "Get questions by category ids")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Questions and Answers found",
+                    content = {
+                            @Content(mediaType = "application/json",
+                                    schema = @Schema(implementation = QuestionsResponseDto.class)
+                            )
+                    })
+    })
     @GetMapping("/by-category-ids")
     public ResponseEntity<QuestionsResponseDto> getQuestionsByCategoryIds(@RequestParam List<Long> categoryIds) {
         List<QuestionDto> questionDtos =  questionService.getQuestionsByCategoryIds(categoryIds)
