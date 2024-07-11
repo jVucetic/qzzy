@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -95,7 +96,9 @@ public class QuestionService {
     }
 
     public List<Question> getQuestionsByCategoryIds(List<Long> categoryIds) {
-        return questionRepository.findQuestionByCategoryIds(categoryIds);
+        List<Question> questions =  questionRepository.findQuestionByCategoryIds(categoryIds);
+        Collections.shuffle(questions);
+        return questions.stream().limit(5).toList();
     }
 
 }
