@@ -35,7 +35,7 @@ public class QuestionController {
     public ResponseEntity<QuestionsResponseDto> getAllQuestions() {
         List<QuestionDto> questionDtos = questionService.getAllQuestions().stream()
                 .map(mapper::toQuestionDTO)
-                .collect(Collectors.toList());
+                .toList();
         return ResponseEntity.ok(new QuestionsResponseDto(questionDtos));
     }
 
@@ -49,5 +49,14 @@ public class QuestionController {
     public boolean isAnswerCorrect(@PathVariable Long questionId, @PathVariable Long answerId) {
         questionService.simulateDelay();
         return questionService.isAnswerCorrect(questionId, answerId);
+    }
+
+    @GetMapping("/by-category-ids")
+    public ResponseEntity<QuestionsResponseDto> getQuestionsByCategoryIds(@RequestParam List<Long> categoryIds) {
+        List<QuestionDto> questionDtos =  questionService.getQuestionsByCategoryIds(categoryIds)
+                .stream()
+                .map(mapper::toQuestionDTO)
+                .toList();
+        return ResponseEntity.ok(new QuestionsResponseDto(questionDtos));
     }
 }

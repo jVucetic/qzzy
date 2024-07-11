@@ -1,10 +1,6 @@
 package com.example.qzzy.services;
 
-import com.example.qzzy.dto.AnswerDTO;
-import com.example.qzzy.dto.CreateQuestionRequest;
-import com.example.qzzy.dto.UpdateAnswerRequest;
-import com.example.qzzy.dto.UpdateQuestionRequest;
-import com.example.qzzy.mappers.QuestionsAndAnswersMapper;
+import com.example.qzzy.dto.*;
 import com.example.qzzy.models.Answer;
 import com.example.qzzy.models.Question;
 import com.example.qzzy.repository.AnswerRepository;
@@ -96,6 +92,10 @@ public class QuestionService {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+    }
+
+    public List<Question> getQuestionsByCategoryIds(List<Long> categoryIds) {
+        return questionRepository.findQuestionByCategoryIds(categoryIds);
     }
 
 }

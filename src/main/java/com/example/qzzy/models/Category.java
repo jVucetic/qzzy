@@ -3,6 +3,7 @@ package com.example.qzzy.models;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -25,4 +26,7 @@ public class Category {
 
     @OneToMany(mappedBy = "parentCategory", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Category> subcategories;
+
+    @OneToMany(mappedBy = "category")
+    private List<Question> questions;
 }

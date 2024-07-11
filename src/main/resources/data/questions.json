@@ -2,6 +2,7 @@
   "questions": [
     {
       "id": 500001,
+      "category_id": 100008,
       "question": "What is the capital of France?",
       "answers": [
         {
@@ -21,6 +22,7 @@
     },
     {
       "id": 500002,
+      "category_id": 100008,
       "question": "Which country is known as the Land of the Rising Sun?",
       "answers": [
         {
@@ -40,6 +42,7 @@
     },
     {
       "id": 500003,
+      "category_id": 100008,
       "question": "What is the largest desert in the world?",
       "answers": [
         {
@@ -59,6 +62,7 @@
     },
     {
       "id": 500004,
+      "category_id": 100008,
       "question": "Which river is the longest in the world?",
       "answers": [
         {
@@ -78,6 +82,7 @@
     },
     {
       "id": 500005,
+      "category_id": 100008,
       "question": "Mount Everest is located in which mountain range?",
       "answers": [
         {

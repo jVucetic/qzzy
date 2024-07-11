@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 public class QuestionDto {
     private Long id;
+    private Long categoryId;
     private String question;
     private List<AnswerDTO> answers;
-
 }

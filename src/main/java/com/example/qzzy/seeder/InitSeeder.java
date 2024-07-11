@@ -77,10 +77,13 @@ public class InitSeeder implements CommandLineRunner {
     private Question parseQuestion(JsonNode questionNode) {
         Long id = questionNode.get("id").asLong();
         String questionText = questionNode.get("question").asText();
+        Long categoryId = questionNode.get("category_id").asLong();
+        Category category = categoryRepository.findById(categoryId).orElseThrow();
 
         return Question.builder()
                 .id(id)
                 .question(questionText)
+                .category(category)
                 .build();
     }
 
