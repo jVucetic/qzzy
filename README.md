@@ -10,7 +10,7 @@
 Clone the project to your local machine using the following command:
 
 ```bash
-git clone [<repository-url>](https://github.com/jVucetic/qzzy)
+git clone https://github.com/jVucetic/qzzy
 ```
 
 ### Step 2: Build and Start the Applicationy
